@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-#You need to set up correct paths and environment
-
-export PYTHONPATH=$PYTHONPATH:/Users/piotr.milos/PycharmProjects/tensor-2-tensor-with-mrunner/tensor-2-tensor-with-mrunner/deps/tensor2tensor
-#Activate environement with all goodies, in particular mrunner. It needs to be python 2.7
+#You need to activate your mrunner environment
 source /Users/piotr.milos/PycharmProjects/VirtualEnvs/default_2.7_all/bin/activate
 
-export MRUNNER_PREFIX="p"
+#Possibly set PYTHONPATH
+#export PYTHONPATH=$PYTHONPATH:/Users/piotr.milos/PycharmProjects/tensor-2-tensor-with-mrunner/tensor-2-tensor-with-mrunner/deps/tensor2tensor
+
+#Put your initials here
+export MRUNNER_PREFIX="pm"
 
 set -x
 
-python deepsense_experiments/dispatcher.py --ex $1 --spec spec --runcfg plgrid_sbatch_agents --cores 24 --partition plgrid --timelimit 480000
+python experiments/dispatcher.py --ex $1 --spec spec --runcfg plgrid_sbatch_agents --cores 24 --partition plgrid --timelimit 480000

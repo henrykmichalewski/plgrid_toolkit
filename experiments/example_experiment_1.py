@@ -3,14 +3,23 @@ from utils import *
 
 
 def create_experiment_for_spec(delta):
-# def create_experiment_for_spec(delta, gamma):
 
-    what = 'python experiments/train_proxy_2.py'
-    name = 'example experiment sine'
+    #The file to be run
+    what = 'python experiments/train_proxy_1.py'
 
+    #Name in neptune
+    name = 'example experiment'
+
+    #project name in neptune
     project_name = "tutorial"
+
+    #this paths are added to pythonpath in the remote experiment
     python_path = '.:deps/deep_lib:deps/tensor2tensor'
+
+    #this paths are send to the plgrid
     paths_to_dump = 'xxx deps experiments'
+
+    #tag dispayed in neptune
     tags = 'pmilos tutorial'.split(' ')
 
     config = {
@@ -31,8 +40,7 @@ def create_experiment_for_spec(delta):
                              parameters=parameters,
                              paths_to_dump=paths_to_dump)
 
-parameters_spec = Bunch(delta=Choose([0.5, 1.0]))
-# parameters_spec = Bunch(delta=Choose([0.5, 1.0]), gamma=Choose(0.1, 0.2))
+parameters_spec = Bunch(delta=Choose([0.5]))
 
 
 def spec():
